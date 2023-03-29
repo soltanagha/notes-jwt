@@ -1,4 +1,4 @@
-package com.soomee.notesjwt.jwt;
+package com.soomee.notesjwt.config.security.jwt;
 
 import java.io.IOException;
 

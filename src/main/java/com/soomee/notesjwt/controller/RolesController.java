@@ -3,7 +3,7 @@ package com.soomee.notesjwt.controller;
 
 import com.soomee.notesjwt.dto.RoleDTO;
 import com.soomee.notesjwt.model.response.Response;
-import com.soomee.notesjwt.service.RoleServiceImpl;
+import com.soomee.notesjwt.service.implementation.RoleServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

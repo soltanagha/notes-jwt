@@ -1,7 +1,7 @@
-package com.soomee.notesjwt.jwt;
+package com.soomee.notesjwt.config.security.jwt;
 import java.util.Date;
 
-import com.soomee.notesjwt.service.UserDetailsImpl;
+import com.soomee.notesjwt.service.implementation.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

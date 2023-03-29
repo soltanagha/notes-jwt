@@ -1,6 +1,6 @@
-package com.soomee.notesjwt.jwt;
+package com.soomee.notesjwt.config.security.jwt;
 
-import com.soomee.notesjwt.service.UserDetailsServiceImpl;
+import com.soomee.notesjwt.service.implementation.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

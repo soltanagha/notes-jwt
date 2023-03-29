@@ -48,6 +48,31 @@ public class NoteController {
                         .build());
     }
 
+    @PutMapping
+    @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
+    public ResponseEntity<Response> update(@RequestBody NoteDTO noteDTO) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("note",noteService.updateNote(noteDTO)))
+                        .message("Note successfully updated!")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build());
+    }
+
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<Response> delete(@PathVariable("id") String id) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("note",noteService.deleteNoteByID(id)))
+                        .message("Note successfully deleted!")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build());
+    }
+
     @PostMapping("/like/{noteId}")
     @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
     public ResponseEntity<Response> likeNote(@PathVariable String noteId, @AuthenticationPrincipal UserDetails userDetails) {

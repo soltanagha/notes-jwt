@@ -1,9 +1,10 @@
-package com.soomee.notesjwt.service;
+package com.soomee.notesjwt.service.implementation;
 
 import com.soomee.notesjwt.dto.RoleDTO;
 import com.soomee.notesjwt.model.Role;
 import com.soomee.notesjwt.model.exception.EmptyInputException;
 import com.soomee.notesjwt.repository.RoleRepository;
+import com.soomee.notesjwt.service.RoleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
     private final ModelMapper modelMapper;
     private final RoleRepository roleRepository;
 

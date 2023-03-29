@@ -1,7 +1,7 @@
 package com.soomee.notesjwt.config.security;
 
-import com.soomee.notesjwt.jwt.AuthEntryPointJwt;
-import com.soomee.notesjwt.jwt.AuthTokenFilter;
+import com.soomee.notesjwt.config.security.jwt.AuthEntryPointJwt;
+import com.soomee.notesjwt.config.security.jwt.AuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

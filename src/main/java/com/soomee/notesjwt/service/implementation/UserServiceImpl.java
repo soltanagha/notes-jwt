@@ -1,7 +1,7 @@
-package com.soomee.notesjwt.service;
+package com.soomee.notesjwt.service.implementation;
 
 
-import com.soomee.notesjwt.jwt.JwtUtils;
+import com.soomee.notesjwt.config.security.jwt.JwtUtils;
 import com.soomee.notesjwt.model.Role;
 import com.soomee.notesjwt.model.User;
 import com.soomee.notesjwt.model.enums.RoleType;
@@ -11,9 +11,11 @@ import com.soomee.notesjwt.model.response.JwtResponse;
 import com.soomee.notesjwt.model.response.MessageResponse;
 import com.soomee.notesjwt.repository.RoleRepository;
 import com.soomee.notesjwt.repository.UserRepository;
+import com.soomee.notesjwt.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -51,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
+                .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
         return new JwtResponse(jwt,
                 userDetails.getId(),

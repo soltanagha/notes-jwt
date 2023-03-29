@@ -10,10 +10,15 @@ public interface NoteService {
 
     List<NoteDTO> getAllNotes();
 
+
     NoteDTO createNote(NoteDTO note);
 
+    NoteDTO updateNote(NoteDTO note);
 
     NoteDTO likeNote(String noteId, String userName);
 
     NoteDTO unlikeNote(String noteId, String userName);
+
+    NoteDTO deleteNoteByID(String id);
+
 }

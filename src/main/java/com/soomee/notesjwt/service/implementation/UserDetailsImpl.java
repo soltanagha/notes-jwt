@@ -1,4 +1,4 @@
-package com.soomee.notesjwt.service;
+package com.soomee.notesjwt.service.implementation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soomee.notesjwt.model.User;
