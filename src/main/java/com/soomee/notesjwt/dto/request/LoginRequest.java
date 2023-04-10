@@ -1,4 +1,4 @@
-package com.soomee.notesjwt.model.request;
+package com.soomee.notesjwt.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

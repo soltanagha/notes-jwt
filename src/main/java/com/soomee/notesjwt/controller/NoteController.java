@@ -1,8 +1,9 @@
 package com.soomee.notesjwt.controller;
 
 import com.soomee.notesjwt.dto.NoteDTO;
-import com.soomee.notesjwt.model.response.Response;
+import com.soomee.notesjwt.dto.response.Response;
 import com.soomee.notesjwt.service.NoteService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -37,7 +38,7 @@ public class NoteController {
 
     @PostMapping
     @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
-    public ResponseEntity<Response> create(@RequestBody NoteDTO note) {
+    public ResponseEntity<Response> create(@Valid @RequestBody NoteDTO note) {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
@@ -50,7 +51,7 @@ public class NoteController {
 
     @PutMapping
     @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
-    public ResponseEntity<Response> update(@RequestBody NoteDTO noteDTO) {
+    public ResponseEntity<Response> update(@Valid @RequestBody NoteDTO noteDTO) {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())

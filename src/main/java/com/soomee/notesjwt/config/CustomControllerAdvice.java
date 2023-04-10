@@ -1,7 +1,7 @@
 package com.soomee.notesjwt.config;
 
-import com.soomee.notesjwt.model.exception.EmptyInputException;
-import com.soomee.notesjwt.model.response.Response;
+import com.soomee.notesjwt.dto.exception.EmptyInputException;
+import com.soomee.notesjwt.dto.response.Response;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

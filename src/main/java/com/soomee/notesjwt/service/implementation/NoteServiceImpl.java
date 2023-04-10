@@ -2,10 +2,12 @@ package com.soomee.notesjwt.service.implementation;
 
 import com.soomee.notesjwt.dto.NoteDTO;
 import com.soomee.notesjwt.model.Note;
-import com.soomee.notesjwt.model.exception.EmptyInputException;
+import com.soomee.notesjwt.dto.exception.EmptyInputException;
 import com.soomee.notesjwt.repository.NoteRepository;
 import com.soomee.notesjwt.service.NoteService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,8 @@ public class NoteServiceImpl implements NoteService {
 
     private final ModelMapper modelMapper;
 
+    private static final Logger logger = LoggerFactory.getLogger(NoteServiceImpl.class);
+
     public NoteServiceImpl(NoteRepository noteRepository, ModelMapper modelMapper) {
         this.noteRepository = noteRepository;
         this.modelMapper = modelMapper;
@@ -29,6 +33,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDTO> getAllNotes() {
+        logger.info("Fetching all notes!");
         return noteRepository
                 .findAllByOrderByCreatedOnDesc()
                 .stream()
@@ -38,6 +43,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public NoteDTO createNote(NoteDTO noteDTO) {
+        logger.info("Creating new note in database!");
         if (noteDTO.getContent().isEmpty())
             throw new EmptyInputException("601","Note content is empty!");
         else if (noteDTO.getComments() == null)
@@ -52,6 +58,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public NoteDTO updateNote(NoteDTO noteDTO) {
+        logger.info("Update note!");
         return noteRepository.findById(noteDTO.getId()).stream().map((note) -> {
             note.setTitle(noteDTO.getTitle());
             note.setContent(noteDTO.getContent());
@@ -63,6 +70,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public NoteDTO likeNote(String noteId, String userName) {
+        logger.info("Like note by id: "+noteId);
         Note note = noteRepository.findById(noteId).
                 orElseThrow(() -> new NoSuchElementException("Note not found id: " + noteId));
 
@@ -76,6 +84,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public NoteDTO unlikeNote(String noteId, String userName) {
+        logger.info("Unlike note by id: "+noteId);
         Note note = noteRepository.findById(noteId).
                 orElseThrow(() -> new UsernameNotFoundException("Note not found id: " + noteId));
 
@@ -89,6 +98,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public NoteDTO deleteNoteByID(String id) {
+        logger.info("Delete note by id: "+id);
         Note note = noteRepository.findById(id).stream()
                 .findFirst().orElseThrow(NoSuchElementException::new);
         noteRepository.delete(note);

@@ -1,4 +1,4 @@
-package com.soomee.notesjwt.model.exception;
+package com.soomee.notesjwt.dto.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

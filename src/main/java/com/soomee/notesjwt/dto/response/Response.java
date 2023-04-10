@@ -1,4 +1,4 @@
-package com.soomee.notesjwt.model.response;
+package com.soomee.notesjwt.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

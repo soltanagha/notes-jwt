@@ -1,9 +1,9 @@
 package com.soomee.notesjwt.controller;
 
 import com.soomee.notesjwt.model.User;
-import com.soomee.notesjwt.model.request.LoginRequest;
-import com.soomee.notesjwt.model.request.SignupRequest;
-import com.soomee.notesjwt.model.response.MessageResponse;
+import com.soomee.notesjwt.dto.request.LoginRequest;
+import com.soomee.notesjwt.dto.request.SignupRequest;
+import com.soomee.notesjwt.dto.response.MessageResponse;
 import com.soomee.notesjwt.service.implementation.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
