@@ -22,7 +22,8 @@ jobs:
       - name: Setup Java 17
         uses: actions/setup-java@v3
         with:
-          java-version: 17
+          java-version: '17'
+          distribution: 'temurin'
 
       - name: Build with Maven
         run: mvn package --no-transfer-progress
@@ -35,7 +36,7 @@ jobs:
           tags: ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.APP_NAME }}:${{ github.sha }}
 
       - name: Deploy to Kubernetes
-        uses: appleboy/kubectl-action@v1
+        uses: gane5hvarma/kubectl-actions@master
         with:
           args: set image deployment/${{ env.APP_NAME }} ${{ env.APP_NAME }}=${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.APP_NAME }}:${{ github.sha }}
           kubeconfig: ${{ secrets.KUBECONFIG }}
