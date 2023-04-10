@@ -2,14 +2,15 @@ name: Continuous Deployment TEST
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      APP_NAME: "my-spring-boot-app"
+      APP_NAME: "my-spring-boot-deployment"
       DOCKER_REGISTRY: "docker.io"
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
