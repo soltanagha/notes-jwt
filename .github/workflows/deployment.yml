@@ -10,7 +10,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      APP_NAME: "my-spring-boot-deployment"
+      APP_NAME: "notes-jwt"
       DOCKER_REGISTRY: "docker.io"
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
